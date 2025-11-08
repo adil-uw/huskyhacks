@@ -1,4 +1,4 @@
-# Perks & Impact - Sound Credit Union Dashboard
+# Sound Loop - Sound Credit Union Dashboard
 
 A modern, responsive React.js web application for managing perks and tracking community impact.
 

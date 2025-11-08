@@ -7,7 +7,7 @@ const NavBar = ({ currentPage, onNavigate }) => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-4">
             <div className="text-2xl">🏦</div>
-            <h1 className="text-xl font-bold">Perks & Impact</h1>
+            <h1 className="text-xl font-bold">Sound Loop</h1>
             <span className="text-sm opacity-75">Sound Credit Union</span>
           </div>
 

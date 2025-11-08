@@ -57,7 +57,7 @@ const Marketplace = ({ onApplyOffer, onDonate, showToast }) => {
 
   const handleApply = (offer) => {
     onApplyOffer(offer);
-    showToast('✅ Offer applied successfully!', 'success');
+    // Toast will be shown by the modal after QR code is displayed
   };
 
   const handleDonate = (cause, amount) => {
