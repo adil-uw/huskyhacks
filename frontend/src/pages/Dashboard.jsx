@@ -1,13 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { recommendedPerks, activePerks } from '../data/mockData';
 import { SavingsGauge, ImpactProgress } from '../components/ScoreMeters';
+import SoundCoinsMeter from '../components/SoundCoinsMeter';
+import CryptoQuickStart from '../components/CryptoQuickStart';
 import BadgeChip from '../components/BadgeChip';
 import OfferCard from '../components/OfferCard';
 import ToggleSwitch from '../components/ToggleSwitch';
 import OfferDetailsModal from '../components/OfferDetailsModal';
 import ImpactReportModal from '../components/ImpactReportModal';
 
-const Dashboard = ({ userData, onNavigate, onApplyOffer, onDonate, showToast }) => {
+const Dashboard = ({ userData, onNavigate, onApplyOffer, onDonate, showToast, setPage, awardSoundCoins }) => {
   const [autoApply, setAutoApply] = useState(true);
   const [selectedOffer, setSelectedOffer] = useState(null);
   const [showImpactModal, setShowImpactModal] = useState(false);
@@ -78,6 +80,10 @@ const Dashboard = ({ userData, onNavigate, onApplyOffer, onDonate, showToast }) 
           <ImpactProgress value={userData.donated} target={userData.targets.impact} />
         </div>
 
+        <div className="mb-6">
+          <SoundCoinsMeter coins={userData.soundCoins} goal={userData.targets.soundCoins} />
+        </div>
+
         <div className="flex flex-wrap gap-2 mb-4">
           {userData.badges.map((badge, idx) => (
             <BadgeChip key={idx} text={badge} variant="success" />
@@ -91,6 +97,13 @@ const Dashboard = ({ userData, onNavigate, onApplyOffer, onDonate, showToast }) 
           View Impact Report
         </button>
       </div>
+
+      {/* Crypto Quick Start */}
+      <CryptoQuickStart
+        onStartLesson={() => setPage('crypto-learning')}
+        onOpenWallet={() => setPage('crypto-wallet')}
+        onRedeem={() => setPage('crypto-redeem')}
+      />
 
       {/* Personalized Perks Carousel */}
       <div className="mb-8 relative">
@@ -207,6 +220,7 @@ const Dashboard = ({ userData, onNavigate, onApplyOffer, onDonate, showToast }) 
           onClose={() => setSelectedOffer(null)}
           onApply={handleApply}
           onDonate={handleDonate}
+          onAwardCoins={awardSoundCoins}
         />
       )}
 
