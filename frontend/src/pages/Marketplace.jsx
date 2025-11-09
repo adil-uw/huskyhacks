@@ -4,7 +4,7 @@ import FilterBar from '../components/FilterBar';
 import OfferCard from '../components/OfferCard';
 import OfferDetailsModal from '../components/OfferDetailsModal';
 
-const Marketplace = ({ onApplyOffer, onDonate, showToast }) => {
+const Marketplace = ({ onApplyOffer, onDonate, showToast, awardSoundCoins }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedSort, setSelectedSort] = useState('Highest Value');
@@ -119,6 +119,7 @@ const Marketplace = ({ onApplyOffer, onDonate, showToast }) => {
           onClose={() => setSelectedOffer(null)}
           onApply={handleApply}
           onDonate={handleDonate}
+          onAwardCoins={awardSoundCoins}
         />
       )}
     </div>

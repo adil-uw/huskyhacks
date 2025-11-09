@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import BadgeChip from './BadgeChip';
 
-const OfferDetailsModal = ({ offer, onClose, onApply, onDonate }) => {
+const OfferDetailsModal = ({ offer, onClose, onApply, onDonate, onAwardCoins }) => {
   const [selectedCause, setSelectedCause] = useState('');
   const [showTerms, setShowTerms] = useState(false);
   const [showQRCode, setShowQRCode] = useState(false);
@@ -30,6 +30,9 @@ const OfferDetailsModal = ({ offer, onClose, onApply, onDonate }) => {
     setQrCodeType('apply');
     setShowQRCode(true);
     onApply(offer);
+    if (onAwardCoins) {
+      onAwardCoins(10, "Offer applied");
+    }
   };
 
   const handleCopyCode = async () => {
@@ -52,6 +55,9 @@ const OfferDetailsModal = ({ offer, onClose, onApply, onDonate }) => {
     setQrCodeType('donate');
     setShowQRCode(true);
     onDonate(selectedCause, donateAmount);
+    if (onAwardCoins) {
+      onAwardCoins(15, "Donation");
+    }
   };
 
   return (
